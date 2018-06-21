@@ -17,3 +17,21 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 ```
 kubeadm join --token <token> <master-ip>:<master-port> --discovery-token-ca-cert-hash sha256:<hash>
 ```
+Following are the commands that will be useful in your kubernetes endevours:
+1) ```kubectl get nodes```<br>
+2) ```kubectl run kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1 --port=8080 ```<br>
+3) ```kubectl get deployments ```<br>
+4) ```kubectl proxy ```<br>
+5) ```export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}') echo Name of the Pod: $POD_NAME ```<br>
+6) ```kubectl get pods ```<br>
+7) ```kubectl get services ```<br>
+8) ```kubectl describe pods ```<br>
+9) ```kubectl exec -ti $POD_NAME bash ```<br>
+10) ```kubectl exec $POD_NAME env ```<br>
+11) ```kubectl logs $POD_NAME  ```<br>
+12) ```kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080 ```<br>
+13) ```kubectl delete service -l run=kubernetes-bootcamp ```<br>
+14) ```kubectl scale deployments/kubernetes-bootcamp --replicas=4 ```<br>
+15) ```kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2 ```<br>
+16) ```export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}') echo NODE_PORT=$NODE_PORT ```<br>
+17) ```kubectl rollout status deployments/kubernetes-bootcamp ```<br>
