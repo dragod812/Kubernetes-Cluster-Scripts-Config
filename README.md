@@ -7,7 +7,7 @@ sudo sh ./install-master.sh
 #on slave
 sudo sh ./install-node.sh
 
-#Then run the join command
+#Then run the join command on slave
 kubeadm join $KUBE_MASTER_IP:6443 --token $KUBE_TOKEN --discovery-token-ca-cert-hash $KUBE_DISCOVERY_HASH
 ```
 
