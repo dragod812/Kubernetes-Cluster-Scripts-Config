@@ -1,0 +1,68 @@
+#---------intermediate image for fetching files from private repository------------
+FROM ubuntu:16.04 as intermediate
+
+# - ARG - Variables that are accessed during Image build ARG SSH_REPO_LINK=git@github.com:sidharthpa/flask-api-for-ignite.git
+ARG SSH_REPO_LINK=git@github.com:sidharthpa/flask-api-for-ignite.git
+ARG SSH_PRIVATE_KEY=./id_rsa
+
+# install git
+RUN apt-get update
+RUN apt-get install -y git
+
+# add credentials on build RUN mkdir /root/.ssh/ First add the public key to github-repo/settings/keys
+# copy the private key ~/.ssh/id_rsa to folder in which the Dockerfile is present
+# RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_rsa
+COPY ${SSH_PRIVATE_KEY} /root/.ssh/
+
+# make sure your domain is accepted
+RUN touch /root/.ssh/known_hosts
+RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
+
+RUN git clone ${SSH_REPO_LINK}
+# RUN ssh-agent $(ssh-add /root/.ssh/id_rsa; git clone git@github.com:sidharthpa/Docker-Superset-Setup.git)
+
+#-------------------Application Container--------------------------
+FROM python:3.6.8-alpine3.8
+
+# - ARG - Variables that are accessed during Image build
+ARG REPO_NAME=flask-api-for-ignite
+ARG USER=couture
+ARG USER_HOME=/home/${USER}
+
+ARG TEMP_REPO_LOC=${USER_HOME}/temp
+ARG FLASK_API_DIR=${USER_HOME}/api-files
+ARG IGNITE_CLUSTER_IP=10.111.211.195
+ARG IGNITE_CLUSTER_PORT=10800
+#-------------setting environment variables and arguments-------------
+# - ENV - Variables that persist during container run time
+ENV LC_ALL=C.UTF-8 \
+    LANG=C.UTF-8 \
+    IGNITE_CLUSTER_IP=${IGNITE_CLUSTER_IP} \
+    IGNITE_CLUSTER_PORT=${IGNITE_CLUSTER_PORT}
+
+# --------------------------Add User Couture--------------------------
+RUN adduser -D couture
+
+#------Copy required files from intermediate container-------
+COPY --from=intermediate /${REPO_NAME} ${TEMP_REPO_LOC}/
+RUN cp -rf ${TEMP_REPO_LOC}/api-files ${FLASK_API_DIR}
+
+#------install python packages from requirements.txt------
+RUN pip install -r  ${TEMP_REPO_LOC}/requirements.txt
+
+#-----switch user inside container after installation-----
+RUN chown -R couture:couture ${FLASK_API_DIR} ${USER_HOME}
+USER ${USER}:${USER}
+
+#---------------Application specific changes---------------
+WORKDIR ${USER_HOME}/api-files
+
+#remove temp files from home
+RUN rm -rf /home/${USER}/temp
+
+#------------------Expose required Ports------------------
+EXPOSE 5000
+
+#-----------------Run Superset Application-----------------
+#docker run --name CONTAINER-NAME-tid -p 8088:8088 -v supersetdb:/home/couture/.superset image:tag
+CMD gunicorn -b 0.0.0.0:5000 -w 4 api:app

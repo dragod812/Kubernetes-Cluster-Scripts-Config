@@ -1,0 +1,1764 @@
+{'bulletins': [],
+ 'component': {'bundle': {'artifact': 'nifi-standard-nar',
+                          'group': 'org.apache.nifi',
+                          'version': '1.9.2'},
+               'config': {'annotation_data': None,
+                          'auto_terminated_relationships': None,
+                          'bulletin_level': 'WARN',
+                          'comments': '',
+                          'concurrently_schedulable_task_count': 1,
+                          'custom_ui_url': None,
+                          'default_concurrent_tasks': {'CRON_DRIVEN': '1',
+                                                       'EVENT_DRIVEN': '0',
+                                                       'TIMER_DRIVEN': '1'},
+                          'default_scheduling_period': {'CRON_DRIVEN': '* * * '
+                                                                       '* * ?',
+                                                        'TIMER_DRIVEN': '0 '
+                                                                        'sec'},
+                          'descriptors': {'Connection Timeout': {'allowable_values': None,
+                                                                 'default_value': '30 '
+                                                                                  'sec',
+                                                                 'description': 'Amount '
+                                                                                'of '
+                                                                                'time '
+                                                                                'to '
+                                                                                'wait '
+                                                                                'before '
+                                                                                'timing '
+                                                                                'out '
+                                                                                'while '
+                                                                                'creating '
+                                                                                'a '
+                                                                                'connection',
+                                                                 'display_name': 'Connection '
+                                                                                 'Timeout',
+                                                                 'dynamic': False,
+                                                                 'expression_language_scope': 'Not '
+                                                                                              'Supported',
+                                                                 'identifies_controller_service': None,
+                                                                 'identifies_controller_service_bundle': None,
+                                                                 'name': 'Connection '
+                                                                         'Timeout',
+                                                                 'required': True,
+                                                                 'sensitive': False,
+                                                                 'supports_el': False},
+                                          'Data Timeout': {'allowable_values': None,
+                                                           'default_value': '30 '
+                                                                            'sec',
+                                                           'description': 'When '
+                                                                          'transferring '
+                                                                          'a '
+                                                                          'file '
+                                                                          'between '
+                                                                          'the '
+                                                                          'local '
+                                                                          'and '
+                                                                          'remote '
+                                                                          'system, '
+                                                                          'this '
+                                                                          'value '
+                                                                          'specifies '
+                                                                          'how '
+                                                                          'long '
+                                                                          'is '
+                                                                          'allowed '
+                                                                          'to '
+                                                                          'elapse '
+                                                                          'without '
+                                                                          'any '
+                                                                          'data '
+                                                                          'being '
+                                                                          'transferred '
+                                                                          'between '
+                                                                          'systems',
+                                                           'display_name': 'Data '
+                                                                           'Timeout',
+                                                           'dynamic': False,
+                                                           'expression_language_scope': 'Not '
+                                                                                        'Supported',
+                                                           'identifies_controller_service': None,
+                                                           'identifies_controller_service_bundle': None,
+                                                           'name': 'Data '
+                                                                   'Timeout',
+                                                           'required': True,
+                                                           'sensitive': False,
+                                                           'supports_el': False},
+                                          'Distributed Cache Service': {'allowable_values': [],
+                                                                        'default_value': None,
+                                                                        'description': 'NOTE: '
+                                                                                       'This '
+                                                                                       'property '
+                                                                                       'is '
+                                                                                       'used '
+                                                                                       'merely '
+                                                                                       'for '
+                                                                                       'migration '
+                                                                                       'from '
+                                                                                       'old '
+                                                                                       'NiFi '
+                                                                                       'version '
+                                                                                       'before '
+                                                                                       'state '
+                                                                                       'management '
+                                                                                       'was '
+                                                                                       'introduced '
+                                                                                       'at '
+                                                                                       'version '
+                                                                                       '0.5.0. '
+                                                                                       'The '
+                                                                                       'stored '
+                                                                                       'value '
+                                                                                       'in '
+                                                                                       'the '
+                                                                                       'cache '
+                                                                                       'service '
+                                                                                       'will '
+                                                                                       'be '
+                                                                                       'migrated '
+                                                                                       'into '
+                                                                                       'the '
+                                                                                       'state '
+                                                                                       'when '
+                                                                                       'this '
+                                                                                       'processor '
+                                                                                       'is '
+                                                                                       'started '
+                                                                                       'at '
+                                                                                       'the '
+                                                                                       'first '
+                                                                                       'time. '
+                                                                                       'The '
+                                                                                       'specified '
+                                                                                       'Controller '
+                                                                                       'Service '
+                                                                                       'was '
+                                                                                       'used '
+                                                                                       'to '
+                                                                                       'maintain '
+                                                                                       'state '
+                                                                                       'about '
+                                                                                       'what '
+                                                                                       'had '
+                                                                                       'been '
+                                                                                       'pulled '
+                                                                                       'from '
+                                                                                       'the '
+                                                                                       'remote '
+                                                                                       'server '
+                                                                                       'so '
+                                                                                       'that '
+                                                                                       'if '
+                                                                                       'a '
+                                                                                       'new '
+                                                                                       'node '
+                                                                                       'begins '
+                                                                                       'pulling '
+                                                                                       'data, '
+                                                                                       'it '
+                                                                                       "won't "
+                                                                                       'duplicate '
+                                                                                       'all '
+                                                                                       'of '
+                                                                                       'the '
+                                                                                       'work '
+                                                                                       'that '
+                                                                                       'has '
+                                                                                       'been '
+                                                                                       'done. '
+                                                                                       'If '
+                                                                                       'not '
+                                                                                       'specified, '
+                                                                                       'the '
+                                                                                       'information '
+                                                                                       'was '
+                                                                                       'not '
+                                                                                       'shared '
+                                                                                       'across '
+                                                                                       'the '
+                                                                                       'cluster. '
+                                                                                       'This '
+                                                                                       'property '
+                                                                                       'did '
+                                                                                       'not '
+                                                                                       'need '
+                                                                                       'to '
+                                                                                       'be '
+                                                                                       'set '
+                                                                                       'for '
+                                                                                       'standalone '
+                                                                                       'instances '
+                                                                                       'of '
+                                                                                       'NiFi '
+                                                                                       'but '
+                                                                                       'was '
+                                                                                       'supposed '
+                                                                                       'to '
+                                                                                       'be '
+                                                                                       'configured '
+                                                                                       'if '
+                                                                                       'NiFi '
+                                                                                       'had '
+                                                                                       'been '
+                                                                                       'running '
+                                                                                       'within '
+                                                                                       'a '
+                                                                                       'cluster.',
+                                                                        'display_name': 'Distributed '
+                                                                                        'Cache '
+                                                                                        'Service',
+                                                                        'dynamic': False,
+                                                                        'expression_language_scope': 'Not '
+                                                                                                     'Supported',
+                                                                        'identifies_controller_service': 'org.apache.nifi.distributed.cache.client.DistributedMapCacheClient',
+                                                                        'identifies_controller_service_bundle': {'artifact': 'nifi-standard-services-api-nar',
+                                                                                                                 'group': 'org.apache.nifi',
+                                                                                                                 'version': '1.9.2'},
+                                                                        'name': 'Distributed '
+                                                                                'Cache '
+                                                                                'Service',
+                                                                        'required': False,
+                                                                        'sensitive': False,
+                                                                        'supports_el': False},
+                                          'File Filter Regex': {'allowable_values': None,
+                                                                'default_value': None,
+                                                                'description': 'Provides '
+                                                                               'a '
+                                                                               'Java '
+                                                                               'Regular '
+                                                                               'Expression '
+                                                                               'for '
+                                                                               'filtering '
+                                                                               'Filenames; '
+                                                                               'if '
+                                                                               'a '
+                                                                               'filter '
+                                                                               'is '
+                                                                               'supplied, '
+                                                                               'only '
+                                                                               'files '
+                                                                               'whose '
+                                                                               'names '
+                                                                               'match '
+                                                                               'that '
+                                                                               'Regular '
+                                                                               'Expression '
+                                                                               'will '
+                                                                               'be '
+                                                                               'fetched',
+                                                                'display_name': 'File '
+                                                                                'Filter '
+                                                                                'Regex',
+                                                                'dynamic': False,
+                                                                'expression_language_scope': 'Not '
+                                                                                             'Supported',
+                                                                'identifies_controller_service': None,
+                                                                'identifies_controller_service_bundle': None,
+                                                                'name': 'File '
+                                                                        'Filter '
+                                                                        'Regex',
+                                                                'required': False,
+                                                                'sensitive': False,
+                                                                'supports_el': False},
+                                          'Host Key File': {'allowable_values': None,
+                                                            'default_value': None,
+                                                            'description': 'If '
+                                                                           'supplied, '
+                                                                           'the '
+                                                                           'given '
+                                                                           'file '
+                                                                           'will '
+                                                                           'be '
+                                                                           'used '
+                                                                           'as '
+                                                                           'the '
+                                                                           'Host '
+                                                                           'Key; '
+                                                                           'otherwise, '
+                                                                           'no '
+                                                                           'use '
+                                                                           'host '
+                                                                           'key '
+                                                                           'file '
+                                                                           'will '
+                                                                           'be '
+                                                                           'used',
+                                                            'display_name': 'Host '
+                                                                            'Key '
+                                                                            'File',
+                                                            'dynamic': False,
+                                                            'expression_language_scope': 'Not '
+                                                                                         'Supported',
+                                                            'identifies_controller_service': None,
+                                                            'identifies_controller_service_bundle': None,
+                                                            'name': 'Host Key '
+                                                                    'File',
+                                                            'required': False,
+                                                            'sensitive': False,
+                                                            'supports_el': False},
+                                          'Hostname': {'allowable_values': None,
+                                                       'default_value': None,
+                                                       'description': 'The '
+                                                                      'fully '
+                                                                      'qualified '
+                                                                      'hostname '
+                                                                      'or IP '
+                                                                      'address '
+                                                                      'of the '
+                                                                      'remote '
+                                                                      'system',
+                                                       'display_name': 'Hostname',
+                                                       'dynamic': False,
+                                                       'expression_language_scope': 'Variable '
+                                                                                    'Registry '
+                                                                                    'Only',
+                                                       'identifies_controller_service': None,
+                                                       'identifies_controller_service_bundle': None,
+                                                       'name': 'Hostname',
+                                                       'required': True,
+                                                       'sensitive': False,
+                                                       'supports_el': True},
+                                          'Http Proxy Password': {'allowable_values': None,
+                                                                  'default_value': None,
+                                                                  'description': 'Http '
+                                                                                 'Proxy '
+                                                                                 'Password',
+                                                                  'display_name': 'Http '
+                                                                                  'Proxy '
+                                                                                  'Password',
+                                                                  'dynamic': False,
+                                                                  'expression_language_scope': 'Variable '
+                                                                                               'Registry '
+                                                                                               'Only',
+                                                                  'identifies_controller_service': None,
+                                                                  'identifies_controller_service_bundle': None,
+                                                                  'name': 'Http '
+                                                                          'Proxy '
+                                                                          'Password',
+                                                                  'required': False,
+                                                                  'sensitive': True,
+                                                                  'supports_el': True},
+                                          'Http Proxy Username': {'allowable_values': None,
+                                                                  'default_value': None,
+                                                                  'description': 'Http '
+                                                                                 'Proxy '
+                                                                                 'Username',
+                                                                  'display_name': 'Http '
+                                                                                  'Proxy '
+                                                                                  'Username',
+                                                                  'dynamic': False,
+                                                                  'expression_language_scope': 'Variable '
+                                                                                               'Registry '
+                                                                                               'Only',
+                                                                  'identifies_controller_service': None,
+                                                                  'identifies_controller_service_bundle': None,
+                                                                  'name': 'Http '
+                                                                          'Proxy '
+                                                                          'Username',
+                                                                  'required': False,
+                                                                  'sensitive': False,
+                                                                  'supports_el': True},
+                                          'Ignore Dotted Files': {'allowable_values': [{'allowable_value': {'description': None,
+                                                                                                            'display_name': 'true',
+                                                                                                            'value': 'true'},
+                                                                                        'can_read': True},
+                                                                                       {'allowable_value': {'description': None,
+                                                                                                            'display_name': 'false',
+                                                                                                            'value': 'false'},
+                                                                                        'can_read': True}],
+                                                                  'default_value': 'true',
+                                                                  'description': 'If '
+                                                                                 'true, '
+                                                                                 'files '
+                                                                                 'whose '
+                                                                                 'names '
+                                                                                 'begin '
+                                                                                 'with '
+                                                                                 'a '
+                                                                                 'dot '
+                                                                                 '(".") '
+                                                                                 'will '
+                                                                                 'be '
+                                                                                 'ignored',
+                                                                  'display_name': 'Ignore '
+                                                                                  'Dotted '
+                                                                                  'Files',
+                                                                  'dynamic': False,
+                                                                  'expression_language_scope': 'Not '
+                                                                                               'Supported',
+                                                                  'identifies_controller_service': None,
+                                                                  'identifies_controller_service_bundle': None,
+                                                                  'name': 'Ignore '
+                                                                          'Dotted '
+                                                                          'Files',
+                                                                  'required': True,
+                                                                  'sensitive': False,
+                                                                  'supports_el': False},
+                                          'Maximum File Age': {'allowable_values': None,
+                                                               'default_value': None,
+                                                               'description': 'The '
+                                                                              'maximum '
+                                                                              'age '
+                                                                              'that '
+                                                                              'a '
+                                                                              'file '
+                                                                              'must '
+                                                                              'be '
+                                                                              'in '
+                                                                              'order '
+                                                                              'to '
+                                                                              'be '
+                                                                              'pulled; '
+                                                                              'any '
+                                                                              'file '
+                                                                              'older '
+                                                                              'than '
+                                                                              'this '
+                                                                              'amount '
+                                                                              'of '
+                                                                              'time '
+                                                                              '(according '
+                                                                              'to '
+                                                                              'last '
+                                                                              'modification '
+                                                                              'date) '
+                                                                              'will '
+                                                                              'be '
+                                                                              'ignored',
+                                                               'display_name': 'Maximum '
+                                                                               'File '
+                                                                               'Age',
+                                                               'dynamic': False,
+                                                               'expression_language_scope': 'Not '
+                                                                                            'Supported',
+                                                               'identifies_controller_service': None,
+                                                               'identifies_controller_service_bundle': None,
+                                                               'name': 'Maximum '
+                                                                       'File '
+                                                                       'Age',
+                                                               'required': False,
+                                                               'sensitive': False,
+                                                               'supports_el': False},
+                                          'Maximum File Size': {'allowable_values': None,
+                                                                'default_value': None,
+                                                                'description': 'The '
+                                                                               'maximum '
+                                                                               'size '
+                                                                               'that '
+                                                                               'a '
+                                                                               'file '
+                                                                               'can '
+                                                                               'be '
+                                                                               'in '
+                                                                               'order '
+                                                                               'to '
+                                                                               'be '
+                                                                               'pulled',
+                                                                'display_name': 'Maximum '
+                                                                                'File '
+                                                                                'Size',
+                                                                'dynamic': False,
+                                                                'expression_language_scope': 'Not '
+                                                                                             'Supported',
+                                                                'identifies_controller_service': None,
+                                                                'identifies_controller_service_bundle': None,
+                                                                'name': 'Maximum '
+                                                                        'File '
+                                                                        'Size',
+                                                                'required': False,
+                                                                'sensitive': False,
+                                                                'supports_el': False},
+                                          'Minimum File Age': {'allowable_values': None,
+                                                               'default_value': '0 '
+                                                                                'sec',
+                                                               'description': 'The '
+                                                                              'minimum '
+                                                                              'age '
+                                                                              'that '
+                                                                              'a '
+                                                                              'file '
+                                                                              'must '
+                                                                              'be '
+                                                                              'in '
+                                                                              'order '
+                                                                              'to '
+                                                                              'be '
+                                                                              'pulled; '
+                                                                              'any '
+                                                                              'file '
+                                                                              'younger '
+                                                                              'than '
+                                                                              'this '
+                                                                              'amount '
+                                                                              'of '
+                                                                              'time '
+                                                                              '(according '
+                                                                              'to '
+                                                                              'last '
+                                                                              'modification '
+                                                                              'date) '
+                                                                              'will '
+                                                                              'be '
+                                                                              'ignored',
+                                                               'display_name': 'Minimum '
+                                                                               'File '
+                                                                               'Age',
+                                                               'dynamic': False,
+                                                               'expression_language_scope': 'Not '
+                                                                                            'Supported',
+                                                               'identifies_controller_service': None,
+                                                               'identifies_controller_service_bundle': None,
+                                                               'name': 'Minimum '
+                                                                       'File '
+                                                                       'Age',
+                                                               'required': True,
+                                                               'sensitive': False,
+                                                               'supports_el': False},
+                                          'Minimum File Size': {'allowable_values': None,
+                                                                'default_value': '0 '
+                                                                                 'B',
+                                                                'description': 'The '
+                                                                               'minimum '
+                                                                               'size '
+                                                                               'that '
+                                                                               'a '
+                                                                               'file '
+                                                                               'must '
+                                                                               'be '
+                                                                               'in '
+                                                                               'order '
+                                                                               'to '
+                                                                               'be '
+                                                                               'pulled',
+                                                                'display_name': 'Minimum '
+                                                                                'File '
+                                                                                'Size',
+                                                                'dynamic': False,
+                                                                'expression_language_scope': 'Not '
+                                                                                             'Supported',
+                                                                'identifies_controller_service': None,
+                                                                'identifies_controller_service_bundle': None,
+                                                                'name': 'Minimum '
+                                                                        'File '
+                                                                        'Size',
+                                                                'required': True,
+                                                                'sensitive': False,
+                                                                'supports_el': False},
+                                          'Password': {'allowable_values': None,
+                                                       'default_value': None,
+                                                       'description': 'Password '
+                                                                      'for the '
+                                                                      'user '
+                                                                      'account',
+                                                       'display_name': 'Password',
+                                                       'dynamic': False,
+                                                       'expression_language_scope': 'Variable '
+                                                                                    'Registry '
+                                                                                    'and '
+                                                                                    'FlowFile '
+                                                                                    'Attributes',
+                                                       'identifies_controller_service': None,
+                                                       'identifies_controller_service_bundle': None,
+                                                       'name': 'Password',
+                                                       'required': False,
+                                                       'sensitive': True,
+                                                       'supports_el': True},
+                                          'Path Filter Regex': {'allowable_values': None,
+                                                                'default_value': None,
+                                                                'description': 'When '
+                                                                               'Search '
+                                                                               'Recursively '
+                                                                               'is '
+                                                                               'true, '
+                                                                               'then '
+                                                                               'only '
+                                                                               'subdirectories '
+                                                                               'whose '
+                                                                               'path '
+                                                                               'matches '
+                                                                               'the '
+                                                                               'given '
+                                                                               'Regular '
+                                                                               'Expression '
+                                                                               'will '
+                                                                               'be '
+                                                                               'scanned',
+                                                                'display_name': 'Path '
+                                                                                'Filter '
+                                                                                'Regex',
+                                                                'dynamic': False,
+                                                                'expression_language_scope': 'Not '
+                                                                                             'Supported',
+                                                                'identifies_controller_service': None,
+                                                                'identifies_controller_service_bundle': None,
+                                                                'name': 'Path '
+                                                                        'Filter '
+                                                                        'Regex',
+                                                                'required': False,
+                                                                'sensitive': False,
+                                                                'supports_el': False},
+                                          'Port': {'allowable_values': None,
+                                                   'default_value': '22',
+                                                   'description': 'The port to '
+                                                                  'connect to '
+                                                                  'on the '
+                                                                  'remote host '
+                                                                  'to fetch '
+                                                                  'the data '
+                                                                  'from',
+                                                   'display_name': 'Port',
+                                                   'dynamic': False,
+                                                   'expression_language_scope': 'Variable '
+                                                                                'Registry '
+                                                                                'Only',
+                                                   'identifies_controller_service': None,
+                                                   'identifies_controller_service_bundle': None,
+                                                   'name': 'Port',
+                                                   'required': True,
+                                                   'sensitive': False,
+                                                   'supports_el': True},
+                                          'Private Key Passphrase': {'allowable_values': None,
+                                                                     'default_value': None,
+                                                                     'description': 'Password '
+                                                                                    'for '
+                                                                                    'the '
+                                                                                    'private '
+                                                                                    'key',
+                                                                     'display_name': 'Private '
+                                                                                     'Key '
+                                                                                     'Passphrase',
+                                                                     'dynamic': False,
+                                                                     'expression_language_scope': 'Variable '
+                                                                                                  'Registry '
+                                                                                                  'and '
+                                                                                                  'FlowFile '
+                                                                                                  'Attributes',
+                                                                     'identifies_controller_service': None,
+                                                                     'identifies_controller_service_bundle': None,
+                                                                     'name': 'Private '
+                                                                             'Key '
+                                                                             'Passphrase',
+                                                                     'required': False,
+                                                                     'sensitive': True,
+                                                                     'supports_el': True},
+                                          'Private Key Path': {'allowable_values': None,
+                                                               'default_value': None,
+                                                               'description': 'The '
+                                                                              'fully '
+                                                                              'qualified '
+                                                                              'path '
+                                                                              'to '
+                                                                              'the '
+                                                                              'Private '
+                                                                              'Key '
+                                                                              'file',
+                                                               'display_name': 'Private '
+                                                                               'Key '
+                                                                               'Path',
+                                                               'dynamic': False,
+                                                               'expression_language_scope': 'Variable '
+                                                                                            'Registry '
+                                                                                            'and '
+                                                                                            'FlowFile '
+                                                                                            'Attributes',
+                                                               'identifies_controller_service': None,
+                                                               'identifies_controller_service_bundle': None,
+                                                               'name': 'Private '
+                                                                       'Key '
+                                                                       'Path',
+                                                               'required': False,
+                                                               'sensitive': False,
+                                                               'supports_el': True},
+                                          'Proxy Host': {'allowable_values': None,
+                                                         'default_value': None,
+                                                         'description': 'The '
+                                                                        'fully '
+                                                                        'qualified '
+                                                                        'hostname '
+                                                                        'or IP '
+                                                                        'address '
+                                                                        'of '
+                                                                        'the '
+                                                                        'proxy '
+                                                                        'server',
+                                                         'display_name': 'Proxy '
+                                                                         'Host',
+                                                         'dynamic': False,
+                                                         'expression_language_scope': 'Variable '
+                                                                                      'Registry '
+                                                                                      'Only',
+                                                         'identifies_controller_service': None,
+                                                         'identifies_controller_service_bundle': None,
+                                                         'name': 'Proxy Host',
+                                                         'required': False,
+                                                         'sensitive': False,
+                                                         'supports_el': True},
+                                          'Proxy Port': {'allowable_values': None,
+                                                         'default_value': None,
+                                                         'description': 'The '
+                                                                        'port '
+                                                                        'of '
+                                                                        'the '
+                                                                        'proxy '
+                                                                        'server',
+                                                         'display_name': 'Proxy '
+                                                                         'Port',
+                                                         'dynamic': False,
+                                                         'expression_language_scope': 'Variable '
+                                                                                      'Registry '
+                                                                                      'Only',
+                                                         'identifies_controller_service': None,
+                                                         'identifies_controller_service_bundle': None,
+                                                         'name': 'Proxy Port',
+                                                         'required': False,
+                                                         'sensitive': False,
+                                                         'supports_el': True},
+                                          'Proxy Type': {'allowable_values': [{'allowable_value': {'description': None,
+                                                                                                   'display_name': 'DIRECT',
+                                                                                                   'value': 'DIRECT'},
+                                                                               'can_read': True},
+                                                                              {'allowable_value': {'description': None,
+                                                                                                   'display_name': 'HTTP',
+                                                                                                   'value': 'HTTP'},
+                                                                               'can_read': True},
+                                                                              {'allowable_value': {'description': None,
+                                                                                                   'display_name': 'SOCKS',
+                                                                                                   'value': 'SOCKS'},
+                                                                               'can_read': True}],
+                                                         'default_value': 'DIRECT',
+                                                         'description': 'Proxy '
+                                                                        'type '
+                                                                        'used '
+                                                                        'for '
+                                                                        'file '
+                                                                        'transfers',
+                                                         'display_name': 'Proxy '
+                                                                         'Type',
+                                                         'dynamic': False,
+                                                         'expression_language_scope': 'Not '
+                                                                                      'Supported',
+                                                         'identifies_controller_service': None,
+                                                         'identifies_controller_service_bundle': None,
+                                                         'name': 'Proxy Type',
+                                                         'required': False,
+                                                         'sensitive': False,
+                                                         'supports_el': False},
+                                          'Remote Path': {'allowable_values': None,
+                                                          'default_value': '.',
+                                                          'description': 'The '
+                                                                         'path '
+                                                                         'on '
+                                                                         'the '
+                                                                         'remote '
+                                                                         'system '
+                                                                         'from '
+                                                                         'which '
+                                                                         'to '
+                                                                         'pull '
+                                                                         'or '
+                                                                         'push '
+                                                                         'files',
+                                                          'display_name': 'Remote '
+                                                                          'Path',
+                                                          'dynamic': False,
+                                                          'expression_language_scope': 'Variable '
+                                                                                       'Registry '
+                                                                                       'Only',
+                                                          'identifies_controller_service': None,
+                                                          'identifies_controller_service_bundle': None,
+                                                          'name': 'Remote Path',
+                                                          'required': False,
+                                                          'sensitive': False,
+                                                          'supports_el': True},
+                                          'Search Recursively': {'allowable_values': [{'allowable_value': {'description': None,
+                                                                                                           'display_name': 'true',
+                                                                                                           'value': 'true'},
+                                                                                       'can_read': True},
+                                                                                      {'allowable_value': {'description': None,
+                                                                                                           'display_name': 'false',
+                                                                                                           'value': 'false'},
+                                                                                       'can_read': True}],
+                                                                 'default_value': 'false',
+                                                                 'description': 'If '
+                                                                                'true, '
+                                                                                'will '
+                                                                                'pull '
+                                                                                'files '
+                                                                                'from '
+                                                                                'arbitrarily '
+                                                                                'nested '
+                                                                                'subdirectories; '
+                                                                                'otherwise, '
+                                                                                'will '
+                                                                                'not '
+                                                                                'traverse '
+                                                                                'subdirectories',
+                                                                 'display_name': 'Search '
+                                                                                 'Recursively',
+                                                                 'dynamic': False,
+                                                                 'expression_language_scope': 'Not '
+                                                                                              'Supported',
+                                                                 'identifies_controller_service': None,
+                                                                 'identifies_controller_service_bundle': None,
+                                                                 'name': 'Search '
+                                                                         'Recursively',
+                                                                 'required': True,
+                                                                 'sensitive': False,
+                                                                 'supports_el': False},
+                                          'Send Keep Alive On Timeout': {'allowable_values': [{'allowable_value': {'description': None,
+                                                                                                                   'display_name': 'true',
+                                                                                                                   'value': 'true'},
+                                                                                               'can_read': True},
+                                                                                              {'allowable_value': {'description': None,
+                                                                                                                   'display_name': 'false',
+                                                                                                                   'value': 'false'},
+                                                                                               'can_read': True}],
+                                                                         'default_value': 'true',
+                                                                         'description': 'Indicates '
+                                                                                        'whether '
+                                                                                        'or '
+                                                                                        'not '
+                                                                                        'to '
+                                                                                        'send '
+                                                                                        'a '
+                                                                                        'single '
+                                                                                        'Keep '
+                                                                                        'Alive '
+                                                                                        'message '
+                                                                                        'when '
+                                                                                        'SSH '
+                                                                                        'socket '
+                                                                                        'times '
+                                                                                        'out',
+                                                                         'display_name': 'Send '
+                                                                                         'Keep '
+                                                                                         'Alive '
+                                                                                         'On '
+                                                                                         'Timeout',
+                                                                         'dynamic': False,
+                                                                         'expression_language_scope': 'Not '
+                                                                                                      'Supported',
+                                                                         'identifies_controller_service': None,
+                                                                         'identifies_controller_service_bundle': None,
+                                                                         'name': 'Send '
+                                                                                 'Keep '
+                                                                                 'Alive '
+                                                                                 'On '
+                                                                                 'Timeout',
+                                                                         'required': True,
+                                                                         'sensitive': False,
+                                                                         'supports_el': False},
+                                          'Strict Host Key Checking': {'allowable_values': [{'allowable_value': {'description': None,
+                                                                                                                 'display_name': 'true',
+                                                                                                                 'value': 'true'},
+                                                                                             'can_read': True},
+                                                                                            {'allowable_value': {'description': None,
+                                                                                                                 'display_name': 'false',
+                                                                                                                 'value': 'false'},
+                                                                                             'can_read': True}],
+                                                                       'default_value': 'false',
+                                                                       'description': 'Indicates '
+                                                                                      'whether '
+                                                                                      'or '
+                                                                                      'not '
+                                                                                      'strict '
+                                                                                      'enforcement '
+                                                                                      'of '
+                                                                                      'hosts '
+                                                                                      'keys '
+                                                                                      'should '
+                                                                                      'be '
+                                                                                      'applied',
+                                                                       'display_name': 'Strict '
+                                                                                       'Host '
+                                                                                       'Key '
+                                                                                       'Checking',
+                                                                       'dynamic': False,
+                                                                       'expression_language_scope': 'Not '
+                                                                                                    'Supported',
+                                                                       'identifies_controller_service': None,
+                                                                       'identifies_controller_service_bundle': None,
+                                                                       'name': 'Strict '
+                                                                               'Host '
+                                                                               'Key '
+                                                                               'Checking',
+                                                                       'required': True,
+                                                                       'sensitive': False,
+                                                                       'supports_el': False},
+                                          'Username': {'allowable_values': None,
+                                                       'default_value': None,
+                                                       'description': 'Username',
+                                                       'display_name': 'Username',
+                                                       'dynamic': False,
+                                                       'expression_language_scope': 'Variable '
+                                                                                    'Registry '
+                                                                                    'Only',
+                                                       'identifies_controller_service': None,
+                                                       'identifies_controller_service_bundle': None,
+                                                       'name': 'Username',
+                                                       'required': True,
+                                                       'sensitive': False,
+                                                       'supports_el': True},
+                                          'et-initial-listing-target': {'allowable_values': [{'allowable_value': {'description': 'Ignore '
+                                                                                                                                 'entities '
+                                                                                                                                 'having '
+                                                                                                                                 'timestamp '
+                                                                                                                                 'older '
+                                                                                                                                 'than '
+                                                                                                                                 'the '
+                                                                                                                                 'specified '
+                                                                                                                                 "'Tracking "
+                                                                                                                                 'Time '
+                                                                                                                                 "Window' "
+                                                                                                                                 'at '
+                                                                                                                                 'the '
+                                                                                                                                 'initial '
+                                                                                                                                 'listing '
+                                                                                                                                 'activity.',
+                                                                                                                  'display_name': 'Tracking '
+                                                                                                                                  'Time '
+                                                                                                                                  'Window',
+                                                                                                                  'value': 'window'},
+                                                                                              'can_read': True},
+                                                                                             {'allowable_value': {'description': 'Regardless '
+                                                                                                                                 'of '
+                                                                                                                                 'entities '
+                                                                                                                                 'timestamp, '
+                                                                                                                                 'all '
+                                                                                                                                 'existing '
+                                                                                                                                 'entities '
+                                                                                                                                 'will '
+                                                                                                                                 'be '
+                                                                                                                                 'listed '
+                                                                                                                                 'at '
+                                                                                                                                 'the '
+                                                                                                                                 'initial '
+                                                                                                                                 'listing '
+                                                                                                                                 'activity.',
+                                                                                                                  'display_name': 'All '
+                                                                                                                                  'Available',
+                                                                                                                  'value': 'all'},
+                                                                                              'can_read': True}],
+                                                                        'default_value': 'all',
+                                                                        'description': 'Specify '
+                                                                                       'how '
+                                                                                       'initial '
+                                                                                       'listing '
+                                                                                       'should '
+                                                                                       'be '
+                                                                                       'handled. '
+                                                                                       'Used '
+                                                                                       'by '
+                                                                                       "'Tracking "
+                                                                                       "Entities' "
+                                                                                       'strategy.',
+                                                                        'display_name': 'Entity '
+                                                                                        'Tracking '
+                                                                                        'Initial '
+                                                                                        'Listing '
+                                                                                        'Target',
+                                                                        'dynamic': False,
+                                                                        'expression_language_scope': 'Not '
+                                                                                                     'Supported',
+                                                                        'identifies_controller_service': None,
+                                                                        'identifies_controller_service_bundle': None,
+                                                                        'name': 'et-initial-listing-target',
+                                                                        'required': False,
+                                                                        'sensitive': False,
+                                                                        'supports_el': False},
+                                          'et-state-cache': {'allowable_values': [],
+                                                             'default_value': None,
+                                                             'description': 'Listed '
+                                                                            'entities '
+                                                                            'are '
+                                                                            'stored '
+                                                                            'in '
+                                                                            'the '
+                                                                            'specified '
+                                                                            'cache '
+                                                                            'storage '
+                                                                            'so '
+                                                                            'that '
+                                                                            'this '
+                                                                            'processor '
+                                                                            'can '
+                                                                            'resume '
+                                                                            'listing '
+                                                                            'across '
+                                                                            'NiFi '
+                                                                            'restart '
+                                                                            'or '
+                                                                            'in '
+                                                                            'case '
+                                                                            'of '
+                                                                            'primary '
+                                                                            'node '
+                                                                            'change. '
+                                                                            "'Tracking "
+                                                                            "Entities' "
+                                                                            'strategy '
+                                                                            'require '
+                                                                            'tracking '
+                                                                            'information '
+                                                                            'of '
+                                                                            'all '
+                                                                            'listed '
+                                                                            'entities '
+                                                                            'within '
+                                                                            'the '
+                                                                            'last '
+                                                                            "'Tracking "
+                                                                            'Time '
+                                                                            "Window'. "
+                                                                            'To '
+                                                                            'support '
+                                                                            'large '
+                                                                            'number '
+                                                                            'of '
+                                                                            'entities, '
+                                                                            'the '
+                                                                            'strategy '
+                                                                            'uses '
+                                                                            'DistributedMapCache '
+                                                                            'instead '
+                                                                            'of '
+                                                                            'managed '
+                                                                            'state. '
+                                                                            'Cache '
+                                                                            'key '
+                                                                            'format '
+                                                                            'is '
+                                                                            "'ListedEntities::{processorId}(::{nodeId})'. "
+                                                                            'If '
+                                                                            'it '
+                                                                            'tracks '
+                                                                            'per '
+                                                                            'node '
+                                                                            'listed '
+                                                                            'entities, '
+                                                                            'then '
+                                                                            'the '
+                                                                            'optional '
+                                                                            "'::{nodeId}' "
+                                                                            'part '
+                                                                            'is '
+                                                                            'added '
+                                                                            'to '
+                                                                            'manage '
+                                                                            'state '
+                                                                            'separately. '
+                                                                            'E.g. '
+                                                                            'cluster '
+                                                                            'wide '
+                                                                            'cache '
+                                                                            'key '
+                                                                            '= '
+                                                                            "'ListedEntities::8dda2321-0164-1000-50fa-3042fe7d6a7b', "
+                                                                            'per '
+                                                                            'node '
+                                                                            'cache '
+                                                                            'key '
+                                                                            '= '
+                                                                            "'ListedEntities::8dda2321-0164-1000-50fa-3042fe7d6a7b::nifi-node3' "
+                                                                            'The '
+                                                                            'stored '
+                                                                            'cache '
+                                                                            'content '
+                                                                            'is '
+                                                                            'Gzipped '
+                                                                            'JSON '
+                                                                            'string. '
+                                                                            'The '
+                                                                            'cache '
+                                                                            'key '
+                                                                            'will '
+                                                                            'be '
+                                                                            'deleted '
+                                                                            'when '
+                                                                            'target '
+                                                                            'listing '
+                                                                            'configuration '
+                                                                            'is '
+                                                                            'changed. '
+                                                                            'Used '
+                                                                            'by '
+                                                                            "'Tracking "
+                                                                            "Entities' "
+                                                                            'strategy.',
+                                                             'display_name': 'Entity '
+                                                                             'Tracking '
+                                                                             'State '
+                                                                             'Cache',
+                                                             'dynamic': False,
+                                                             'expression_language_scope': 'Not '
+                                                                                          'Supported',
+                                                             'identifies_controller_service': 'org.apache.nifi.distributed.cache.client.DistributedMapCacheClient',
+                                                             'identifies_controller_service_bundle': {'artifact': 'nifi-standard-services-api-nar',
+                                                                                                      'group': 'org.apache.nifi',
+                                                                                                      'version': '1.9.2'},
+                                                             'name': 'et-state-cache',
+                                                             'required': False,
+                                                             'sensitive': False,
+                                                             'supports_el': False},
+                                          'et-time-window': {'allowable_values': None,
+                                                             'default_value': '3 '
+                                                                              'hours',
+                                                             'description': 'Specify '
+                                                                            'how '
+                                                                            'long '
+                                                                            'this '
+                                                                            'processor '
+                                                                            'should '
+                                                                            'track '
+                                                                            'already-listed '
+                                                                            'entities. '
+                                                                            "'Tracking "
+                                                                            "Entities' "
+                                                                            'strategy '
+                                                                            'can '
+                                                                            'pick '
+                                                                            'any '
+                                                                            'entity '
+                                                                            'whose '
+                                                                            'timestamp '
+                                                                            'is '
+                                                                            'inside '
+                                                                            'the '
+                                                                            'specified '
+                                                                            'time '
+                                                                            'window. '
+                                                                            'For '
+                                                                            'example, '
+                                                                            'if '
+                                                                            'set '
+                                                                            'to '
+                                                                            "'30 "
+                                                                            "minutes', "
+                                                                            'any '
+                                                                            'entity '
+                                                                            'having '
+                                                                            'timestamp '
+                                                                            'in '
+                                                                            'recent '
+                                                                            '30 '
+                                                                            'minutes '
+                                                                            'will '
+                                                                            'be '
+                                                                            'the '
+                                                                            'listing '
+                                                                            'target '
+                                                                            'when '
+                                                                            'this '
+                                                                            'processor '
+                                                                            'runs. '
+                                                                            'A '
+                                                                            'listed '
+                                                                            'entity '
+                                                                            'is '
+                                                                            'considered '
+                                                                            "'new/updated' "
+                                                                            'and '
+                                                                            'a '
+                                                                            'FlowFile '
+                                                                            'is '
+                                                                            'emitted '
+                                                                            'if '
+                                                                            'one '
+                                                                            'of '
+                                                                            'following '
+                                                                            'condition '
+                                                                            'meets: '
+                                                                            '1. '
+                                                                            'does '
+                                                                            'not '
+                                                                            'exist '
+                                                                            'in '
+                                                                            'the '
+                                                                            'already-listed '
+                                                                            'entities, '
+                                                                            '2. '
+                                                                            'has '
+                                                                            'newer '
+                                                                            'timestamp '
+                                                                            'than '
+                                                                            'the '
+                                                                            'cached '
+                                                                            'entity, '
+                                                                            '3. '
+                                                                            'has '
+                                                                            'different '
+                                                                            'size '
+                                                                            'than '
+                                                                            'the '
+                                                                            'cached '
+                                                                            'entity. '
+                                                                            'If '
+                                                                            'a '
+                                                                            'cached '
+                                                                            "entity's "
+                                                                            'timestamp '
+                                                                            'becomes '
+                                                                            'older '
+                                                                            'than '
+                                                                            'specified '
+                                                                            'time '
+                                                                            'window, '
+                                                                            'that '
+                                                                            'entity '
+                                                                            'will '
+                                                                            'be '
+                                                                            'removed '
+                                                                            'from '
+                                                                            'the '
+                                                                            'cached '
+                                                                            'already-listed '
+                                                                            'entities. '
+                                                                            'Used '
+                                                                            'by '
+                                                                            "'Tracking "
+                                                                            "Entities' "
+                                                                            'strategy.',
+                                                             'display_name': 'Entity '
+                                                                             'Tracking '
+                                                                             'Time '
+                                                                             'Window',
+                                                             'dynamic': False,
+                                                             'expression_language_scope': 'Variable '
+                                                                                          'Registry '
+                                                                                          'Only',
+                                                             'identifies_controller_service': None,
+                                                             'identifies_controller_service_bundle': None,
+                                                             'name': 'et-time-window',
+                                                             'required': False,
+                                                             'sensitive': False,
+                                                             'supports_el': True},
+                                          'follow-symlink': {'allowable_values': [{'allowable_value': {'description': None,
+                                                                                                       'display_name': 'true',
+                                                                                                       'value': 'true'},
+                                                                                   'can_read': True},
+                                                                                  {'allowable_value': {'description': None,
+                                                                                                       'display_name': 'false',
+                                                                                                       'value': 'false'},
+                                                                                   'can_read': True}],
+                                                             'default_value': 'false',
+                                                             'description': 'If '
+                                                                            'true, '
+                                                                            'will '
+                                                                            'pull '
+                                                                            'even '
+                                                                            'symbolic '
+                                                                            'files '
+                                                                            'and '
+                                                                            'also '
+                                                                            'nested '
+                                                                            'symbolic '
+                                                                            'subdirectories; '
+                                                                            'otherwise, '
+                                                                            'will '
+                                                                            'not '
+                                                                            'read '
+                                                                            'symbolic '
+                                                                            'files '
+                                                                            'and '
+                                                                            'will '
+                                                                            'not '
+                                                                            'traverse '
+                                                                            'symbolic '
+                                                                            'link '
+                                                                            'subdirectories',
+                                                             'display_name': 'Follow '
+                                                                             'symlink',
+                                                             'dynamic': False,
+                                                             'expression_language_scope': 'Not '
+                                                                                          'Supported',
+                                                             'identifies_controller_service': None,
+                                                             'identifies_controller_service_bundle': None,
+                                                             'name': 'follow-symlink',
+                                                             'required': True,
+                                                             'sensitive': False,
+                                                             'supports_el': False},
+                                          'listing-strategy': {'allowable_values': [{'allowable_value': {'description': 'This '
+                                                                                                                        'strategy '
+                                                                                                                        'tracks '
+                                                                                                                        'the '
+                                                                                                                        'latest '
+                                                                                                                        'timestamp '
+                                                                                                                        'of '
+                                                                                                                        'listed '
+                                                                                                                        'entity '
+                                                                                                                        'to '
+                                                                                                                        'determine '
+                                                                                                                        'new/updated '
+                                                                                                                        'entities. '
+                                                                                                                        'Since '
+                                                                                                                        'it '
+                                                                                                                        'only '
+                                                                                                                        'tracks '
+                                                                                                                        'few '
+                                                                                                                        'timestamps, '
+                                                                                                                        'it '
+                                                                                                                        'can '
+                                                                                                                        'manage '
+                                                                                                                        'listing '
+                                                                                                                        'state '
+                                                                                                                        'efficiently. '
+                                                                                                                        'However, '
+                                                                                                                        'any '
+                                                                                                                        'newly '
+                                                                                                                        'added, '
+                                                                                                                        'or '
+                                                                                                                        'updated '
+                                                                                                                        'entity '
+                                                                                                                        'having '
+                                                                                                                        'timestamp '
+                                                                                                                        'older '
+                                                                                                                        'than '
+                                                                                                                        'the '
+                                                                                                                        'tracked '
+                                                                                                                        'latest '
+                                                                                                                        'timestamp '
+                                                                                                                        'can '
+                                                                                                                        'not '
+                                                                                                                        'be '
+                                                                                                                        'picked '
+                                                                                                                        'by '
+                                                                                                                        'this '
+                                                                                                                        'strategy. '
+                                                                                                                        'For '
+                                                                                                                        'example, '
+                                                                                                                        'such '
+                                                                                                                        'situation '
+                                                                                                                        'can '
+                                                                                                                        'happen '
+                                                                                                                        'in '
+                                                                                                                        'a '
+                                                                                                                        'file '
+                                                                                                                        'system '
+                                                                                                                        'if '
+                                                                                                                        'a '
+                                                                                                                        'file '
+                                                                                                                        'with '
+                                                                                                                        'old '
+                                                                                                                        'timestamp '
+                                                                                                                        'is '
+                                                                                                                        'copied '
+                                                                                                                        'or '
+                                                                                                                        'moved '
+                                                                                                                        'into '
+                                                                                                                        'the '
+                                                                                                                        'target '
+                                                                                                                        'directory '
+                                                                                                                        'without '
+                                                                                                                        'its '
+                                                                                                                        'last '
+                                                                                                                        'modified '
+                                                                                                                        'timestamp '
+                                                                                                                        'being '
+                                                                                                                        'updated.',
+                                                                                                         'display_name': 'Tracking '
+                                                                                                                         'Timestamps',
+                                                                                                         'value': 'timestamps'},
+                                                                                     'can_read': True},
+                                                                                    {'allowable_value': {'description': 'This '
+                                                                                                                        'strategy '
+                                                                                                                        'tracks '
+                                                                                                                        'information '
+                                                                                                                        'of '
+                                                                                                                        'all '
+                                                                                                                        'the '
+                                                                                                                        'listed '
+                                                                                                                        'entities '
+                                                                                                                        'within '
+                                                                                                                        'the '
+                                                                                                                        'latest '
+                                                                                                                        "'Entity "
+                                                                                                                        'Tracking '
+                                                                                                                        'Time '
+                                                                                                                        "Window' "
+                                                                                                                        'to '
+                                                                                                                        'determine '
+                                                                                                                        'new/updated '
+                                                                                                                        'entities. '
+                                                                                                                        'This '
+                                                                                                                        'strategy '
+                                                                                                                        'can '
+                                                                                                                        'pick '
+                                                                                                                        'entities '
+                                                                                                                        'having '
+                                                                                                                        'old '
+                                                                                                                        'timestamp '
+                                                                                                                        'that '
+                                                                                                                        'can '
+                                                                                                                        'be '
+                                                                                                                        'missed '
+                                                                                                                        'with '
+                                                                                                                        "'Tracing "
+                                                                                                                        "Timestamps'. "
+                                                                                                                        'However '
+                                                                                                                        'additional '
+                                                                                                                        'DistributedMapCache '
+                                                                                                                        'controller '
+                                                                                                                        'service '
+                                                                                                                        'is '
+                                                                                                                        'required '
+                                                                                                                        'and '
+                                                                                                                        'more '
+                                                                                                                        'JVM '
+                                                                                                                        'heap '
+                                                                                                                        'memory '
+                                                                                                                        'is '
+                                                                                                                        'used. '
+                                                                                                                        'See '
+                                                                                                                        'the '
+                                                                                                                        'description '
+                                                                                                                        'of '
+                                                                                                                        "'Entity "
+                                                                                                                        'Tracking '
+                                                                                                                        'Time '
+                                                                                                                        "Window' "
+                                                                                                                        'property '
+                                                                                                                        'for '
+                                                                                                                        'further '
+                                                                                                                        'details '
+                                                                                                                        'on '
+                                                                                                                        'how '
+                                                                                                                        'it '
+                                                                                                                        'works.',
+                                                                                                         'display_name': 'Tracking '
+                                                                                                                         'Entities',
+                                                                                                         'value': 'entities'},
+                                                                                     'can_read': True}],
+                                                               'default_value': 'timestamps',
+                                                               'description': 'Specify '
+                                                                              'how '
+                                                                              'to '
+                                                                              'determine '
+                                                                              'new/updated '
+                                                                              'entities. '
+                                                                              'See '
+                                                                              'each '
+                                                                              'strategy '
+                                                                              'descriptions '
+                                                                              'for '
+                                                                              'detail.',
+                                                               'display_name': 'Listing '
+                                                                               'Strategy',
+                                                               'dynamic': False,
+                                                               'expression_language_scope': 'Not '
+                                                                                            'Supported',
+                                                               'identifies_controller_service': None,
+                                                               'identifies_controller_service_bundle': None,
+                                                               'name': 'listing-strategy',
+                                                               'required': True,
+                                                               'sensitive': False,
+                                                               'supports_el': False},
+                                          'proxy-configuration-service': {'allowable_values': [],
+                                                                          'default_value': None,
+                                                                          'description': 'Specifies '
+                                                                                         'the '
+                                                                                         'Proxy '
+                                                                                         'Configuration '
+                                                                                         'Controller '
+                                                                                         'Service '
+                                                                                         'to '
+                                                                                         'proxy '
+                                                                                         'network '
+                                                                                         'requests. '
+                                                                                         'If '
+                                                                                         'set, '
+                                                                                         'it '
+                                                                                         'supersedes '
+                                                                                         'proxy '
+                                                                                         'settings '
+                                                                                         'configured '
+                                                                                         'per '
+                                                                                         'component. '
+                                                                                         'Supported '
+                                                                                         'proxies: '
+                                                                                         'SOCKS '
+                                                                                         '+ '
+                                                                                         'AuthN, '
+                                                                                         'HTTP '
+                                                                                         '+ '
+                                                                                         'AuthN',
+                                                                          'display_name': 'Proxy '
+                                                                                          'Configuration '
+                                                                                          'Service',
+                                                                          'dynamic': False,
+                                                                          'expression_language_scope': 'Not '
+                                                                                                       'Supported',
+                                                                          'identifies_controller_service': 'org.apache.nifi.proxy.ProxyConfigurationService',
+                                                                          'identifies_controller_service_bundle': {'artifact': 'nifi-standard-services-api-nar',
+                                                                                                                   'group': 'org.apache.nifi',
+                                                                                                                   'version': '1.9.2'},
+                                                                          'name': 'proxy-configuration-service',
+                                                                          'required': False,
+                                                                          'sensitive': False,
+                                                                          'supports_el': False},
+                                          'target-system-timestamp-precision': {'allowable_values': [{'allowable_value': {'description': 'Automatically '
+                                                                                                                                         'detect '
+                                                                                                                                         'time '
+                                                                                                                                         'unit '
+                                                                                                                                         'deterministically '
+                                                                                                                                         'based '
+                                                                                                                                         'on '
+                                                                                                                                         'candidate '
+                                                                                                                                         'entries '
+                                                                                                                                         'timestamp. '
+                                                                                                                                         'Please '
+                                                                                                                                         'note '
+                                                                                                                                         'that '
+                                                                                                                                         'this '
+                                                                                                                                         'option '
+                                                                                                                                         'may '
+                                                                                                                                         'take '
+                                                                                                                                         'longer '
+                                                                                                                                         'to '
+                                                                                                                                         'list '
+                                                                                                                                         'entities '
+                                                                                                                                         'unnecessarily, '
+                                                                                                                                         'if '
+                                                                                                                                         'none '
+                                                                                                                                         'of '
+                                                                                                                                         'entries '
+                                                                                                                                         'has '
+                                                                                                                                         'a '
+                                                                                                                                         'precise '
+                                                                                                                                         'precision '
+                                                                                                                                         'timestamp. '
+                                                                                                                                         'E.g. '
+                                                                                                                                         'even '
+                                                                                                                                         'if '
+                                                                                                                                         'a '
+                                                                                                                                         'target '
+                                                                                                                                         'system '
+                                                                                                                                         'supports '
+                                                                                                                                         'millis, '
+                                                                                                                                         'if '
+                                                                                                                                         'all '
+                                                                                                                                         'entries '
+                                                                                                                                         'only '
+                                                                                                                                         'have '
+                                                                                                                                         'timestamps '
+                                                                                                                                         'without '
+                                                                                                                                         'millis, '
+                                                                                                                                         'such '
+                                                                                                                                         'as '
+                                                                                                                                         "'2017-06-16 "
+                                                                                                                                         "09:06:34.000', "
+                                                                                                                                         'then '
+                                                                                                                                         'its '
+                                                                                                                                         'precision '
+                                                                                                                                         'is '
+                                                                                                                                         'determined '
+                                                                                                                                         'as '
+                                                                                                                                         "'seconds'.",
+                                                                                                                          'display_name': 'Auto '
+                                                                                                                                          'Detect',
+                                                                                                                          'value': 'auto-detect'},
+                                                                                                      'can_read': True},
+                                                                                                     {'allowable_value': {'description': 'This '
+                                                                                                                                         'option '
+                                                                                                                                         'provides '
+                                                                                                                                         'the '
+                                                                                                                                         'minimum '
+                                                                                                                                         'latency '
+                                                                                                                                         'for '
+                                                                                                                                         'an '
+                                                                                                                                         'entry '
+                                                                                                                                         'from '
+                                                                                                                                         'being '
+                                                                                                                                         'available '
+                                                                                                                                         'to '
+                                                                                                                                         'being '
+                                                                                                                                         'listed '
+                                                                                                                                         'if '
+                                                                                                                                         'target '
+                                                                                                                                         'system '
+                                                                                                                                         'supports '
+                                                                                                                                         'millis, '
+                                                                                                                                         'if '
+                                                                                                                                         'not, '
+                                                                                                                                         'use '
+                                                                                                                                         'other '
+                                                                                                                                         'options.',
+                                                                                                                          'display_name': 'Milliseconds',
+                                                                                                                          'value': 'millis'},
+                                                                                                      'can_read': True},
+                                                                                                     {'allowable_value': {'description': 'For '
+                                                                                                                                         'a '
+                                                                                                                                         'target '
+                                                                                                                                         'system '
+                                                                                                                                         'that '
+                                                                                                                                         'does '
+                                                                                                                                         'not '
+                                                                                                                                         'have '
+                                                                                                                                         'millis '
+                                                                                                                                         'precision, '
+                                                                                                                                         'but '
+                                                                                                                                         'has '
+                                                                                                                                         'in '
+                                                                                                                                         'seconds.',
+                                                                                                                          'display_name': 'Seconds',
+                                                                                                                          'value': 'seconds'},
+                                                                                                      'can_read': True},
+                                                                                                     {'allowable_value': {'description': 'For '
+                                                                                                                                         'a '
+                                                                                                                                         'target '
+                                                                                                                                         'system '
+                                                                                                                                         'that '
+                                                                                                                                         'only '
+                                                                                                                                         'supports '
+                                                                                                                                         'precision '
+                                                                                                                                         'in '
+                                                                                                                                         'minutes.',
+                                                                                                                          'display_name': 'Minutes',
+                                                                                                                          'value': 'minutes'},
+                                                                                                      'can_read': True}],
+                                                                                'default_value': 'auto-detect',
+                                                                                'description': 'Specify '
+                                                                                               'timestamp '
+                                                                                               'precision '
+                                                                                               'at '
+                                                                                               'the '
+                                                                                               'target '
+                                                                                               'system. '
+                                                                                               'Since '
+                                                                                               'this '
+                                                                                               'processor '
+                                                                                               'uses '
+                                                                                               'timestamp '
+                                                                                               'of '
+                                                                                               'entities '
+                                                                                               'to '
+                                                                                               'decide '
+                                                                                               'which '
+                                                                                               'should '
+                                                                                               'be '
+                                                                                               'listed, '
+                                                                                               'it '
+                                                                                               'is '
+                                                                                               'crucial '
+                                                                                               'to '
+                                                                                               'use '
+                                                                                               'the '
+                                                                                               'right '
+                                                                                               'timestamp '
+                                                                                               'precision.',
+                                                                                'display_name': 'Target '
+                                                                                                'System '
+                                                                                                'Timestamp '
+                                                                                                'Precision',
+                                                                                'dynamic': False,
+                                                                                'expression_language_scope': 'Not '
+                                                                                                             'Supported',
+                                                                                'identifies_controller_service': None,
+                                                                                'identifies_controller_service_bundle': None,
+                                                                                'name': 'target-system-timestamp-precision',
+                                                                                'required': True,
+                                                                                'sensitive': False,
+                                                                                'supports_el': False}},
+                          'execution_node': 'PRIMARY',
+                          'loss_tolerant': False,
+                          'penalty_duration': '30 sec',
+                          'properties': {'Connection Timeout': '30 sec',
+                                         'Data Timeout': '30 sec',
+                                         'Distributed Cache Service': None,
+                                         'File Filter Regex': None,
+                                         'Host Key File': None,
+                                         'Hostname': 'ec2-18-218-72-133.us-east-2.compute.amazonaws.com',
+                                         'Http Proxy Password': None,
+                                         'Http Proxy Username': None,
+                                         'Ignore Dotted Files': 'true',
+                                         'Maximum File Age': None,
+                                         'Maximum File Size': None,
+                                         'Minimum File Age': '0 sec',
+                                         'Minimum File Size': '0 B',
+                                         'Password': '********',
+                                         'Path Filter Regex': None,
+                                         'Port': '22',
+                                         'Private Key Passphrase': None,
+                                         'Private Key Path': '/home/nifi/kube.pem',
+                                         'Proxy Host': None,
+                                         'Proxy Port': None,
+                                         'Proxy Type': 'DIRECT',
+                                         'Remote Path': '/home/ubuntu/random_data',
+                                         'Search Recursively': 'false',
+                                         'Send Keep Alive On Timeout': 'true',
+                                         'Strict Host Key Checking': 'false',
+                                         'Username': 'ubuntu',
+                                         'et-initial-listing-target': 'all',
+                                         'et-state-cache': None,
+                                         'et-time-window': '3 hours',
+                                         'follow-symlink': 'false',
+                                         'listing-strategy': 'timestamps',
+                                         'proxy-configuration-service': None,
+                                         'target-system-timestamp-precision': 'auto-detect'},
+                          'run_duration_millis': 0,
+                          'scheduling_period': '0 sec',
+                          'scheduling_strategy': 'TIMER_DRIVEN',
+                          'yield_duration': '1 sec'},
+               'deprecated': False,
+               'description': None,
+               'execution_node_restricted': True,
+               'extension_missing': False,
+               'id': '016a100c-359e-107c-c74f-03ed3443cecd',
+               'input_requirement': 'INPUT_FORBIDDEN',
+               'multiple_versions_available': False,
+               'name': 'ListSFTP',
+               'parent_group_id': '016a1004-359e-107c-2a30-591d6f086cb1',
+               'persists_state': True,
+               'position': {'x': 256.00000763613116, 'y': 51.499994148500264},
+               'relationships': [{'auto_terminate': True,
+                                  'description': 'All FlowFiles that are '
+                                                 'received are routed to '
+                                                 'success',
+                                  'name': 'success'}],
+               'restricted': False,
+               'state': 'RUNNING',
+               'style': {},
+               'supports_batching': False,
+               'supports_event_driven': False,
+               'supports_parallel_processing': False,
+               'type': 'org.apache.nifi.processors.standard.ListSFTP',
+               'validation_errors': None,
+               'validation_status': 'VALID',
+               'versioned_component_id': None},
+ 'disconnected_node_acknowledged': None,
+ 'id': '016a100c-359e-107c-c74f-03ed3443cecd',
+ 'input_requirement': 'INPUT_FORBIDDEN',
+ 'operate_permissions': {'can_read': True, 'can_write': True},
+ 'permissions': {'can_read': True, 'can_write': True},
+ 'position': {'x': 256.00000763613116, 'y': 51.499994148500264},
+ 'revision': {'client_id': '016a100b-359e-107c-70a4-d50c071c3a19',
+              'last_modifier': None,
+              'version': 5},
+ 'status': {'aggregate_snapshot': {'active_thread_count': 0,
+                                   'bytes_in': 0,
+                                   'bytes_out': 0,
+                                   'bytes_read': 0,
+                                   'bytes_written': 0,
+                                   'execution_node': 'PRIMARY',
+                                   'flow_files_in': 0,
+                                   'flow_files_out': 0,
+                                   'group_id': '016a1004-359e-107c-2a30-591d6f086cb1',
+                                   'id': '016a100c-359e-107c-c74f-03ed3443cecd',
+                                   'input': '0 (0 bytes)',
+                                   'name': 'ListSFTP',
+                                   'output': '0 (0 bytes)',
+                                   'read': '0 bytes',
+                                   'run_status': 'Running',
+                                   'task_count': 80,
+                                   'tasks': '80',
+                                   'tasks_duration': '00:00:53.290',
+                                   'tasks_duration_nanos': 53290406260,
+                                   'terminated_thread_count': 0,
+                                   'type': 'ListSFTP',
+                                   'written': '0 bytes'},
+            'group_id': '016a1004-359e-107c-2a30-591d6f086cb1',
+            'id': '016a100c-359e-107c-c74f-03ed3443cecd',
+            'name': 'ListSFTP',
+            'node_snapshots': None,
+            'run_status': 'Running',
+            'stats_last_refreshed': '13:49:44 UTC',
+            'type': None},
+ 'uri': 'http://localhost:8080/nifi-api/processors/016a100c-359e-107c-c74f-03ed3443cecd'}

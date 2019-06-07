@@ -1,0 +1,107 @@
+#create ip finder service
+apiVersion: v1
+kind: Service
+metadata:
+  # The name must be equal to TcpDiscoveryKubernetesIpFinder.serviceName
+  name: ignite
+  # The name must be equal to TcpDiscoveryKubernetesIpFinder.namespaceName
+  namespace: api-serving-layer
+spec:
+  ports:
+    - name: rest
+      port: 8080
+      targetPort: 8080
+    - name: thinclients
+      port: 10800
+      targetPort: 10800
+  selector:
+    # Must be equal to the label set for Ignite pods.
+    app: ignite
+---
+#create Persistent volume for replica 1
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ignite-storage
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+      storage: 2Gi
+  hostPath:
+    path: "/home/ubuntu/PV/ignite"
+
+---
+#create Persistent volume for replica 2
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ignite-storage1
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+      storage: 2Gi
+  hostPath:
+    path: "/home/ubuntu/PV/ignite"
+
+---
+#create stateful set for ignite cluster
+#adjust the persistent volumes and replicas according to needs
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: ignite
+  namespace: api-serving-layer
+spec:
+  selector:
+    matchLabels:
+      app: ignite
+  serviceName: ignite
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: ignite
+    spec:
+      serviceAccountName: api-serving-account
+      containers:
+      - name: ignite
+        image: apacheignite/ignite:2.7.0
+        resources:
+          requests:
+            memory: 2Gi
+            cpu: 500m
+          limits:
+            memory: 2Gi
+            cpu: 1000m
+        env:
+        - name: OPTION_LIBS
+          value: ignite-kubernetes,ignite-rest-http
+        - name: CONFIG_URI
+          value: https://raw.githubusercontent.com/sidharthpa/Ignite-kubernetes-config-files/master/kube-persistence.xml
+        - name: IGNITE_QUIET
+          value: "false"
+        - name: JVM_OPTS
+          value: "-Djava.net.preferIPv4Stack=true"
+        ports:
+        - containerPort: 11211 # JDBC port number.
+        - containerPort: 47100 # communication SPI port number.
+        - containerPort: 47500 # discovery SPI port number.
+        - containerPort: 49112 # JMX port number.
+        - containerPort: 10800 # SQL port number.
+        - containerPort: 8080 # REST port number.
+        - containerPort: 10900 #Thin clients port number.
+        volumeMounts:
+        - mountPath: "/data/ignite"
+          name: ignite-storage
+        # command: ["apache-ignite/bin/control.sh --activate"]
+  volumeClaimTemplates:
+  - metadata:
+      name: ignite-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 2Gi
+

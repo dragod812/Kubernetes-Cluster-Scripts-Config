@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: console-mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: console-mysql
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: console-mysql
+spec:
+  selector:
+    matchLabels:
+      app: console-mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: console-mysql
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: console-mysql
+        env:
+          # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: console-mysql-pv-claim
+

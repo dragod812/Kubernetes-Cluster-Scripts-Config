@@ -1,0 +1,193 @@
+{% extends "navbar.html" %}
+
+{% block title %}New Project{% endblock %}
+
+{% block body %}
+{{ super() }}
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+         <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>New Job <span class="badge badge-success">6</span></a>
+                                <div id="submenu-1" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2">Data Load</a>
+                                            <div id="submenu-1-2" class="collapse submenu" style="">
+                                                <ul class="nav flex-column">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="index.html">Data Load Dashboard</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{{ url_for('index.index') }}">SFTP</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="ecommerce-product-single.html">MiNiFi</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="ecommerce-product-checkout.html">Couture SDK</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ url_for('static', filename='dashboard-finance.html') }}">Machine Learning</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ url_for('static', filename='dashboard-sales.html') }}">Results</a>
+                                        </li>                                        
+                                    </ul>
+                                </div>                       
+                           
+                            <li class="nav-divider">
+                                User Control Panel
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">SFTP</h2>
+                                <p class="pageheader-text">SFTP - Data Loading Job</p>
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href=" {{ url_for('index.index')}}" class="breadcrumb-link">Home</a></li>
+                                            <li class="breadcrumb-item"><a href=" {{ url_for('project.project', projectid= project.id) }}" class="breadcrumb-link">{{project.project_name}}</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">SFTP</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="card">
+                        <h5 class="card-header">SFTP</h5>
+                        <div class="card-body">
+                            <form class="splash-container" method = post>
+                                {{ form.hidden_tag() }}
+                                <div class="form-group">
+                                    {{ form.hostname.label }} <br>
+                                    {{ form.hostname }}
+                                    {% for error in form.hostname.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.username.label }} <br>
+                                    {{ form.username }}
+                                    {% for error in form.username.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.password.label }} <br>
+                                    {{ form.password}}
+                                    {% for error in form.password.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.file_path.label }} <br>
+                                    {{ form.file_path }}
+                                    {% for error in form.file_path.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group pt-2">
+                                        {{ form.submit() }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                             Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- end wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper  -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1 -->
+    <script src="../static/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="../static/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="../static/assets/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script src="../static/assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="../static/assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="../static/assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="../static/assets/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script src="../static/assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="../static/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="../static/assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="../static/assets/libs/js/dashboard-ecommerce.js"></script>
+{% endblock %}

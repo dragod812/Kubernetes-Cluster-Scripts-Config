@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: python-pod
+  namespace: couture-console
+spec:
+  containers:
+  - name: python-pod
+    image: sidharthc/python-pod:latest
+    command: ["python", "./keep-running.py"]
+

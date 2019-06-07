@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: api-serving-layer
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: api-serving-account
+  namespace: api-serving-layer
+---
+#this gives cluster-admin role to ServiceAccount: ignite
+#alternatively you can create a ClusterRole
+
+#apiVersion: rbac.authorization.k8s.io/v1beta1
+#kind: ClusterRole
+#metadata:
+  #name: ignite
+  #namespace: ignite
+#rules:
+#- apiGroups:
+  #- ""
+  #resources: # Here are resources you can access
+  #- pods
+  #- endpoints
+  #verbs: # That is what you can do with them
+  #- get
+  #- list
+  #- watch
+
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: api-serving-CRB
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: api-serving-account
+  namespace: api-serving-layer
+

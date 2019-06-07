@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-api
+  namespace: api-serving-layer
+spec:
+  selector:
+    matchLabels:
+      app: flask-api
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: flask-api
+    spec:
+      serviceAccountName: api-serving-account 
+      containers:
+      - name: flask-api
+        image: sidharthc/test-flask:latest
+        resources: 
+          requests:
+            cpu: 500m
+          limits:
+            cpu: 1000m
+        ports:
+        - containerPort: 5000
+        env:
+        - name: IGNITE_CLUSTER_IP
+          value: "10.111.211.195"
+        - name: IGNITE_CLUSTER_PORT
+          value: "10800"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-api
+  labels:
+    app: flask-api
+  namespace: api-serving-layer 
+spec:
+  ports:
+  - nodePort: 30000
+    port: 5000
+    protocol: TCP
+  selector:
+    app: flask-api
+  type: NodePort
+

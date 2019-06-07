@@ -1,0 +1,169 @@
+{% extends "navbar.html" %}
+
+{% block title %}New Project{% endblock %}
+
+{% block body %}
+{{ super() }}
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+         <!-- ============================================================== -->
+        <!-- left sidebar -->
+        <!-- ============================================================== -->
+        <div class="nav-left-sidebar sidebar-dark">
+            <div class="menu-list">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav flex-column">
+                            <li class="nav-divider">
+                                Menu
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ url_for('new_project.new_project') }}">New Project</a>
+                            </li>                               
+                            <li class="nav-divider">
+                                User Control Panel
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end left sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- wrapper  -->
+        <!-- ============================================================== -->
+        <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                    <!-- ============================================================== -->
+                    <!-- pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="page-header">
+                                <h2 class="pageheader-title">New Project</h2>
+                                <p class="pageheader-text"></p>
+                                <div class="page-breadcrumb">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href=" {{ url_for('index.index')}}" class="breadcrumb-link">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">New Project</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end pageheader  -->
+                    <!-- ============================================================== -->
+                    <div class="card">
+                        <h5 class="card-header">New Project</h5>
+                        <div class="card-body">
+                            <form class="splash-container" method = post>
+                                {{ form.hidden_tag() }}
+                                <div class="form-group">
+                                    {{ form.project_name.label }} <br>
+                                    {{ form.project_name }}
+                                    {% for error in form.project_name.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group">
+                                    {{ form.project_description.label }} <br>
+                                    {{ form.project_description }}
+                                    {% for error in form.project_description.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+                                <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Username</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Add</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for u in form.company_users %}
+                                    <tr>
+                                        <td>{{ u.u_id.data }}</td>
+                                        <td>{{ u.username.data }}</td>
+                                        <td>{{ u.email.data }}</td>                        
+                                        <td> <input type="checkbox" id="{{u.u_id.data}}" name="accessList" value="{{u.u_id.data}}" > </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                </table>
+                                <div class="form-group pt-2">
+                                        {{ form.submit() }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <div class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                             Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="text-md-right footer-links d-none d-sm-block">
+                                <a href="javascript: void(0);">About</a>
+                                <a href="javascript: void(0);">Support</a>
+                                <a href="javascript: void(0);">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- end wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- end main wrapper  -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1 -->
+    <script src="../static/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <!-- bootstap bundle js -->
+    <script src="../static/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <!-- slimscroll js -->
+    <script src="../static/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <!-- main js -->
+    <script src="../static/assets/libs/js/main-js.js"></script>
+    <!-- chart chartist js -->
+    <script src="../static/assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <!-- sparkline js -->
+    <script src="../static/assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <!-- morris js -->
+    <script src="../static/assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="../static/assets/vendor/charts/morris-bundle/morris.js"></script>
+    <!-- chart c3 js -->
+    <script src="../static/assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="../static/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="../static/assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="../static/assets/libs/js/dashboard-ecommerce.js"></script>
+{% endblock %}

@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-api
+spec:
+  selector:
+    app: flask-api
+  ports:
+  - port: 5000
+    targetPort: 5000
+    nodePort: 30001
+  type: NodePort
+---
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: flask-api
+spec:
+  selector:
+    matchLabels:
+      app: flask-api
+  serviceName: flask-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flask-api
+    spec:
+      serviceAccountName: api-serving-account
+      containers:
+      - name: flask-api
+        image: sidharthc/flask-api:0.0.1
+        ports:
+        - containerPort: 5000
+        env:
+        - name: IGNITE_CLUSTER_IP
+          value: "10.96.21.132"
+        - name: IGNITE_CLUSTER_PORT
+          value: "10800"
