@@ -1,4 +1,17 @@
 # Kubernetes-Cluster-Scripts-Config
+## Kubernetes Setup On-Premise
+```
+# on master
+sudo sh ./install-master.sh
+
+#on slave
+sudo sh ./install-node.sh
+
+#Then run the join command
+kubeadm join $KUBE_MASTER_IP:6443 --token $KUBE_TOKEN --discovery-token-ca-cert-hash $KUBE_DISCOVERY_HASH
+```
+
+## Kubernetes Setup using Vagrant
 Kubernetes Cluster setup scripts and config files for deploying any application in containerized environment.
 Following are the steps to create a local Single Master Cluster using Kubeadm:<br>
 (**Kubeadm** is a tool built to provide kubeadm init and kubeadm join as best-practice “fast paths” for creating Kubernetes clusters.<br>
