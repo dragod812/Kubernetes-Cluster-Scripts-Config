@@ -12,7 +12,7 @@ gunicorn==19.9.0
 itsdangerous==1.1.0
 Jinja2==2.10.1
 kubernetes==8.0.0
-Mako==1.0.8
+Mako==1.2.2
 MarkupSafe==1.1.1
 mysqlclient==1.4.2.post1
 pyignite==0.3.4
